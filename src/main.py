@@ -1,9 +1,17 @@
+print("loading mutsis")
 import utime
 import machine
+print("what")
+from app.motor import motor
 
 mqtt = None
+m = motor()
+def move(message):
+    print("moving")
+    global m
+    m.move(message)
 
-def pin_callback():
+def pin_callback(ihansamamikäseon):
     #Publish message "down" in topic "down"
     global mqtt
     mqtt.pub("pin", "down")
@@ -13,6 +21,7 @@ def hello_callback(message):
     print("hello {}".format(message))
 
 def run(mqtt_obj, parameters):
+    print("got to run")
     #Make mqtt object global, so it can be called from interrupts
     global mqtt 
     mqtt = mqtt_obj
@@ -23,22 +32,24 @@ def run(mqtt_obj, parameters):
     mqtt.set_prefix("example")
 
     #Subscribe to topic "hello"
-    mqtt.sub("hello", hello_callback)
+    #mqtt.sub("hello", hello_callback)
+    mqtt.sub("move", move)
+    print("subscribed to move")
 
     #Setup callback for pin 0
-    p0 = machine.Pin(0, machine.Pin.IN)
-    p0.irq(trigger=machine.Pin.IRQ_FALLING, handler=pin_callback)
+    #p0 = machine.Pin(0, machine.Pin.IN)
+    #p0.irq(trigger=machine.Pin.IRQ_FALLING, handler=pin_callback)
 
     #Main loop
-    i = 0
+    #i = 0
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
 
         #Publish to counter
-        mqtt.pub("counter", i)
-        i += 1
+        #mqtt.pub("counter", i)
+        #i += 1
 
         #Do all the things (or sleep)
 
-        utime.sleep(5)
+        utime.sleep(0.1)
