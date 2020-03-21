@@ -10,15 +10,6 @@ def move(message):
     global m
     m.move(message)
 
-def pin_callback(ihansamamikäseon):
-    #Publish message "down" in topic "down"
-    global mqtt
-    mqtt.pub("pin", "down")
-
-def hello_callback(message):
-    #Print "hello" and message when we receive 
-    print("hello {}".format(message))
-
 def run(mqtt_obj, parameters):
     print("got to run")
     #Make mqtt object global, so it can be called from interrupts
@@ -28,7 +19,7 @@ def run(mqtt_obj, parameters):
     #Set project name as prefix so we can easily filter topics
     #Final topic will be in form:
     #UID/prefix/user_topic
-    mqtt.set_prefix("example")
+    mqtt.set_prefix("train")
 
     mqtt.sub("move", move)
 
