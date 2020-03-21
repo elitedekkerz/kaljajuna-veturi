@@ -4,39 +4,25 @@ from machine import Pin, PWM
 class motor():
     def __init__(self):
         self.m = [Pin(0, Pin.OUT), Pin(2, Pin.OUT)]
-        self.m[0].off()
-        self.m[1].off()
-        #self.pwm = [PWM(self.m[0]),PWM(self.m[1])]
+        self.pwm = [PWM(self.m[0]),PWM(self.m[1])]
+        for p in self.pwm:
+            p.duty(0)
 
     def move(self, direction = 0):
-        print('trying to move {}', direction)
-
         #parse the given direction to a float value
-        direction = int(direction)
+        direction = float(direction)
 
-        if direction == 1:
-            self.m[0].off()
-            self.m[1].on()
-        elif direction == -1:
-            self.m[0].on()
-            self.m[1].off()
-        else:
-            self.m[0].off()
-            self.m[1].off()
-            
-        """
         #break
         if direction == 0:
-            self.pwm[0] = 1024
-            self.pwm[1] = 1024
+            self.pwm[0].duty(0)
+            self.pwm[1].duty(0)
 
         #forwards
         elif direction > 0:
-            self.pwm[0] = 0
-            self.pwm[1] = min(1,direction)*1024/1024
+            self.pwm[0].duty(0)
+            self.pwm[1].duty(int(min(1,direction)*1024.0))
 
         #reverse
         else:
-            self.pwm[0] = max(-1,direction)*1024/1024
-            self.pwm[1] = 0
-        """
+            self.pwm[0].duty(int(min(1,-direction)*1024.0))
+            self.pwm[1].duty(0)

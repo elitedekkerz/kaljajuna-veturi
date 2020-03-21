@@ -1,13 +1,12 @@
-print("loading mutsis")
 import utime
 import machine
-print("what")
 from app.motor import motor
 
 mqtt = None
 m = motor()
 def move(message):
-    print("moving")
+    global mqtt
+    mqtt.pub("status", "moving")
     global m
     m.move(message)
 
@@ -31,25 +30,12 @@ def run(mqtt_obj, parameters):
     #UID/prefix/user_topic
     mqtt.set_prefix("example")
 
-    #Subscribe to topic "hello"
-    #mqtt.sub("hello", hello_callback)
     mqtt.sub("move", move)
-    print("subscribed to move")
-
-    #Setup callback for pin 0
-    #p0 = machine.Pin(0, machine.Pin.IN)
-    #p0.irq(trigger=machine.Pin.IRQ_FALLING, handler=pin_callback)
 
     #Main loop
-    #i = 0
+    mqtt.pub("status", "ready")
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
-
-        #Publish to counter
-        #mqtt.pub("counter", i)
-        #i += 1
-
-        #Do all the things (or sleep)
 
         utime.sleep(0.1)
