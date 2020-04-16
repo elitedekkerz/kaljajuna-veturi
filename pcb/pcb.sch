@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:pcb-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 3
 Title "Kaljajuna-veturi"
 Date ""
 Rev ""
@@ -107,46 +108,13 @@ Wire Wire Line
 	3800 2900 3800 3100
 Connection ~ 4100 2900
 $Sheet
-S 6600 3400 1400 1300
+S 6600 3400 1000 800 
 U 5E8E1E56
 F0 "Motor driver" 79
 F1 "motor-driver.sch" 50
 F2 "motor_drive+" I L 6600 3700 50 
 F3 "motor_drive-" I L 6600 3800 50 
 $EndSheet
-$Comp
-L generic:LED D?
-U 1 1 5E8E201A
-P 5800 3200
-F 0 "D?" V 5800 3328 50  0000 L CNN
-F 1 "LED" H 5800 3100 50  0001 C CNN
-F 2 "SMT:0603" H 5810 3200 50  0001 C CNN
-F 3 "" H 5810 3200 50  0001 C CNN
-	1    5800 3200
-	0    1    1    0   
-$EndComp
-$Comp
-L generic:R R?
-U 1 1 5E8E2090
-P 5600 3500
-F 0 "R?" H 5600 3402 50  0000 C CNN
-F 1 "R" H 5600 3400 50  0001 C CNN
-F 2 "SMT:0603" H 5500 3475 50  0001 C CNN
-F 3 "" H 5600 3500 50  0001 C CNN
-	1    5600 3500
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4800 2900 5800 2900
-Wire Wire Line
-	5800 2900 5800 3100
-Connection ~ 4800 2900
-Wire Wire Line
-	5700 3500 5800 3500
-Wire Wire Line
-	5800 3500 5800 3300
-Wire Wire Line
-	5500 3500 5300 3500
 Wire Wire Line
 	5300 3700 6600 3700
 Wire Wire Line
@@ -189,4 +157,19 @@ Text Label 5500 3700 0    50   ~ 0
 motor_drive+
 Text Label 5500 3800 0    50   ~ 0
 motor_drive-
+Wire Wire Line
+	5300 3200 6100 3200
+Wire Wire Line
+	6100 3200 6100 2700
+$Sheet
+S 6600 2300 1000 800 
+U 5E98F463
+F0 "Hall-effect sensor" 79
+F1 "hall-effect.sch" 50
+F2 "hall_effect" O L 6600 2700 50 
+$EndSheet
+Wire Wire Line
+	6600 2700 6100 2700
+Text Label 5500 3200 0    50   ~ 0
+hall_effect
 $EndSCHEMATC
