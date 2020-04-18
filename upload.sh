@@ -1,14 +1,14 @@
 #!/bin/bash
 
-host=10.1.1.95
-dest=bb543900
+host=$1
+dest=$2
 
 mosquitto_pub -h $host -t $dest/sys/file -m app/main.py &&\
 sleep 1 &&\
-mosquitto_pub -h $host -t $dest/sys/write -f src/main.py &&\
+mosquitto_pub -h $host -t $dest/sys/write -f app/main.py &&\
 sleep 1 &&\
 mosquitto_pub -h $host -t $dest/sys/file -m app/motor.py &&\
 sleep 1 &&\
-mosquitto_pub -h $host -t $dest/sys/write -f src/motor.py &&\
+mosquitto_pub -h $host -t $dest/sys/write -f app/motor.py &&\
 sleep 1 &&\
 mosquitto_pub -h $host -t $dest/sys/reboot -m ""

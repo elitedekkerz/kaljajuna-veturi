@@ -1,0 +1,7 @@
+#kicad
+pcb/output
+pcb/*.bak
+pcb/*.bck
+
+#vim
+**/*.swp
