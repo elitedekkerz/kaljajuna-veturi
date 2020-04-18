@@ -10,6 +10,9 @@ def move(message):
     global m
     m.move(message)
 
+def stop(message):
+    m.move(0)
+
 def run(mqtt_obj, parameters):
     print("got to run")
     #Make mqtt object global, so it can be called from interrupts
