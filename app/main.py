@@ -1,6 +1,7 @@
 import utime
 import machine
 from app.motor import motor
+from app.halleffect import halleffect
 
 mqtt = None
 m = motor()
@@ -12,6 +13,8 @@ def move(message):
 
 def stop(message):
     m.move(0)
+
+h = halleffect()
 
 def run(mqtt_obj, parameters):
     print("got to run")
@@ -32,4 +35,9 @@ def run(mqtt_obj, parameters):
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
 
-        utime.sleep(0.1)
+        sensor = h.read()
+        if sensor > 140 or sensor < 100:
+            global m
+            m.move(0)
+
+        utime.sleep(0.01)
