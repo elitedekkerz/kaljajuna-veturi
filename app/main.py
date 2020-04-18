@@ -3,11 +3,18 @@ import machine
 from app.motor import motor
 from app.halleffect import halleffect
 
+class train():
+    def __init__(self, mqtt):
+        self.status = None
+        self.mqtt = mqtt
+
+    def set_status(self, status):
+        self.mqtt.pub("status", status)
+        self.status = status
+
 mqtt = None
 m = motor()
 def move(message):
-    global mqtt
-    mqtt.pub("status", "moving")
     global m
     m.move(message)
 
@@ -17,7 +24,6 @@ def stop(message):
 h = halleffect()
 
 def run(mqtt_obj, parameters):
-    print("got to run")
     #Make mqtt object global, so it can be called from interrupts
     global mqtt 
     mqtt = mqtt_obj
@@ -29,8 +35,11 @@ def run(mqtt_obj, parameters):
 
     mqtt.sub("move", move)
 
+    global t
+    t = train(mqtt)
+    t.set_status("stopped")
+
     #Main loop
-    mqtt.pub("status", "ready")
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
