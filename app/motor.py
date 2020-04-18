@@ -3,7 +3,7 @@ from machine import Pin, PWM
 
 class motor():
     def __init__(self):
-        self.m = [Pin(0, Pin.OUT), Pin(2, Pin.OUT)]
+        self.m = [Pin(12, Pin.OUT), Pin(13, Pin.OUT)]
         self.pwm = [PWM(self.m[0]),PWM(self.m[1])]
         for p in self.pwm:
             p.duty(0)

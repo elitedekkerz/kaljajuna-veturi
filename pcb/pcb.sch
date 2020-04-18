@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L modules:ESP-12F IC?
+L pcb-rescue:ESP-12F-modules IC?
 U 1 1 5E8E03B3
 P 4800 3800
 F 0 "IC?" H 4800 3900 50  0000 C CNN
@@ -63,7 +63,7 @@ F 3 "" H 4800 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L generic:3V3 3V3?
+L pcb-rescue:3V3-generic 3V3?
 U 1 1 5E8E1283
 P 3800 2800
 F 0 "3V3?" H 3950 2850 50  0001 C CNN
@@ -108,17 +108,15 @@ Wire Wire Line
 	3800 2900 3800 3100
 Connection ~ 4100 2900
 $Sheet
-S 6600 3400 1000 800 
+S 6600 3600 1000 800 
 U 5E8E1E56
 F0 "Motor driver" 79
 F1 "motor-driver.sch" 50
-F2 "motor_drive+" I L 6600 3700 50 
-F3 "motor_drive-" I L 6600 3800 50 
+F2 "motor_drive+" I L 6600 3900 50 
+F3 "motor_drive-" I L 6600 4000 50 
 $EndSheet
 Wire Wire Line
-	5300 3700 6600 3700
-Wire Wire Line
-	5300 3800 6600 3800
+	5300 3900 6600 3900
 $Comp
 L pin_headers:1x6 CN?
 U 1 1 5E8E324A
@@ -153,9 +151,9 @@ Wire Wire Line
 	3800 4600 3800 4300
 Wire Wire Line
 	3800 4300 3700 4300
-Text Label 5500 3700 0    50   ~ 0
+Text Label 5500 3900 0    50   ~ 0
 motor_drive+
-Text Label 5500 3800 0    50   ~ 0
+Text Label 5500 4000 0    50   ~ 0
 motor_drive-
 Wire Wire Line
 	5300 3200 6100 3200
@@ -172,4 +170,6 @@ Wire Wire Line
 	6600 2700 6100 2700
 Text Label 5500 3200 0    50   ~ 0
 hall_effect
+Wire Wire Line
+	5300 4000 6600 4000
 $EndSCHEMATC
