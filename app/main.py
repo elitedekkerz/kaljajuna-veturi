@@ -15,6 +15,12 @@ class train():
         self.hall_timer = machine.Timer(-1)
         self.hall_timer.init(period=10, callback=self.check_hall)
 
+    def calibrate(self, message = "all"):
+        if message in ["all", "hall-effect"]:
+            self.h.calibrate()
+            self.mqtt.pub("calibration", "hall-effect low: {}".format(self.h.sensor_low))
+            self.mqtt.pub("calibration", "hall-effect high: {}".format(self.h.sensor_high))
+
     def set_status(self, status):
         self.mqtt.pub("status", status)
         self.status = status
@@ -64,6 +70,7 @@ def run(mqtt_obj, parameters):
     t.set_status("stopped")
 
     mqtt.sub("move", t.move)
+    mqtt.sub("calibrate", t.calibrate)
 
     #Main loop
     while True:
