@@ -13,7 +13,7 @@ class train():
         self.t = machine.Timer(-1)
         self.t.init(period=1000, callback=self.update)
         self.hall_timer = machine.Timer(-1)
-        self.hall_timer.init(period=30, callback=self.check_hall)
+        self.hall_timer.init(period=10, callback=self.check_hall)
 
     def set_status(self, status):
         self.mqtt.pub("status", status)
@@ -64,9 +64,10 @@ def run(mqtt_obj, parameters):
     t.set_status("stopped")
 
     mqtt.sub("move", t.move)
+
     #Main loop
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
 
-        utime.sleep(0.1)
+        utime.sleep(1)
