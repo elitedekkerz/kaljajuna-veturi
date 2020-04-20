@@ -6,14 +6,20 @@ from app.halleffect import halleffect
 
 class train():
     def __init__(self, mqtt):
+        #variables
         self.status = None
+        self.hops = 1
+        self.speed = -0.3
+        self.direction = 0
+        self.on_checkpoint = False
+
         self.mqtt = mqtt
         self.m = motor()
         self.h = halleffect()
         self.t = machine.Timer(-1)
-        self.t.init(period=5000, callback=self.update)
         self.hall_timer = machine.Timer(-1)
-        self.hall_timer.init(period=10, callback=self.check_hall)
+        self.t.init(period=5000, callback=self.update)
+        self.hall_timer.init(period=30, callback=self.h.check_sensor)
 
     def calibrate(self, message = "all"):
         if message in ["all", "hall-effect"]:
@@ -25,34 +31,51 @@ class train():
         self.mqtt.pub("status", status)
         self.status = status
 
-    def update(self, whatever):
+    def update(self,callback_arg):
         self.mqtt.pub("JSON", json.dumps({
             "hall-effect":self.h.read(),
             "status":self.status,
+            "hops":self.hops,
+            "checkpoint":self.on_checkpoint,
             }))
 
     def move(self, message):
-        if float(message) != 0:
-            if self.status == "stopped":
-                self.set_status("launching")
-            else:
-                self.set_status("moving")
-        else:
+        if message == "stop":
             self.set_status("stopped")
-        self.m.move(message)
-
-    def check_hall(self, whatever):
-        sensor = self.h.read()
-        stop_available = (sensor > 150 or sensor < 90)
-
-        #detect launching condition
-        if not stop_available and self.status == "launching":
+            self.m.move(0)
+        else:
             self.set_status("moving")
-            return
+            self.m.move(self.speed)
 
-        #detect stopping condition
-        if stop_available and self.status == "moving":
-            self.move(0)
+    def statemachine(self, level = None):
+        #check for stop
+        if self.h.sensor_triggered:
+            #clear flag
+            self.h.sensor_triggered = False
+
+            #change status only once per checkpoint
+            if self.on_checkpoint:
+                return
+            self.on_checkpoint = True
+
+            #states
+            if self.status == "moving":
+                self.hops -= 1
+                if self.hops < 1:
+                    #stop and reverse back to checkpoint
+                    self.set_status("homing")
+                    self.m.move(0)
+                    utime.sleep(1)
+                    self.m.move(-self.speed)
+
+            elif self.status == "homing":
+                #stop on checkpoint
+                self.m.move(0)
+                self.hops = 1
+                self.set_status("stopped")
+        else:
+            #clear on_checkpoint flag when not on checkpoint
+            self.on_checkpoint = False
 
 mqtt = None
 
@@ -76,5 +99,6 @@ def run(mqtt_obj, parameters):
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
+        t.statemachine()
 
-        utime.sleep(1)
+        utime.sleep(0.1)
