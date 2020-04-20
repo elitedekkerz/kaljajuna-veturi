@@ -11,7 +11,7 @@ class train():
         self.m = motor()
         self.h = halleffect()
         self.t = machine.Timer(-1)
-        self.t.init(period=1000, callback=self.update)
+        self.t.init(period=5000, callback=self.update)
         self.hall_timer = machine.Timer(-1)
         self.hall_timer.init(period=10, callback=self.check_hall)
 
