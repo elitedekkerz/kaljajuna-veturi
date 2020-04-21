@@ -68,7 +68,7 @@ F 3 "" H 5600 4400 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L pcb-rescue:5V-generic 5V?
+L generic:5V 5V?
 U 1 1 5E98F7C0
 P 5600 3700
 F 0 "5V?" H 5750 3750 50  0001 C CNN
@@ -89,7 +89,7 @@ Wire Wire Line
 Wire Wire Line
 	5700 4000 5400 4000
 $Comp
-L pcb-rescue:1x3-pin_headers CN?
+L pin_headers:1x3 CN?
 U 1 1 5E98F7CB
 P 5400 3900
 F 0 "CN?" H 5628 3905 50  0000 L CNN

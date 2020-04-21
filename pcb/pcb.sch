@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L pcb-rescue:ESP-12F-modules IC?
+L modules:ESP-12F IC?
 U 1 1 5E8E03B3
 P 4800 3800
 F 0 "IC?" H 4800 3900 50  0000 C CNN
@@ -63,7 +63,7 @@ F 3 "" H 4800 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pcb-rescue:3V3-generic 3V3?
+L generic:3V3 3V3?
 U 1 1 5E8E1283
 P 3800 2800
 F 0 "3V3?" H 3950 2850 50  0001 C CNN

@@ -1,6 +1,32 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# generic_3V3
+#
+DEF generic_3V3 3V3 0 0 N N 1 F P
+F0 "3V3" 150 50 50 H I C CNN
+F1 "generic_3V3" 0 150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 50 -50 50 0 100 50 50 0 50 N
+X GND ~ 0 0 100 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# generic_5V
+#
+DEF generic_5V 5V 0 0 N N 1 F P
+F0 "5V" 150 50 50 H I C CNN
+F1 "generic_5V" 0 150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 50 -50 50 0 100 50 50 0 50 N
+X GND ~ 0 0 100 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
 # generic_C
 #
 DEF ~generic_C C 0 0 N N 1 F N
@@ -46,52 +72,11 @@ X ~ 2 100 0 50 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# pcb-rescue_1x3-pin_headers
+# modules_ESP-12F
 #
-DEF ~pcb-rescue_1x3-pin_headers CN 0 40 Y Y 1 F N
-F0 "CN" 100 200 50 H V C CNN
-F1 "pcb-rescue_1x3-pin_headers" 0 200 50 H I C CNN
-F2 "" 0 100 50 H I C CNN
-F3 "" 0 -100 50 H I C CNN
-DRAW
-S 100 150 200 -150 0 1 0 F
-X ~ 1 0 100 100 R 50 50 1 1 B
-X ~ 2 0 0 100 R 50 50 1 1 B
-X ~ 3 0 -100 100 R 50 50 1 1 B
-ENDDRAW
-ENDDEF
-#
-# pcb-rescue_3V3-generic
-#
-DEF pcb-rescue_3V3-generic 3V3 0 0 N N 1 F P
-F0 "3V3" 150 50 50 H I C CNN
-F1 "pcb-rescue_3V3-generic" 0 150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 50 -50 50 0 100 50 50 0 50 N
-X GND ~ 0 0 100 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# pcb-rescue_5V-generic
-#
-DEF pcb-rescue_5V-generic 5V 0 0 N N 1 F P
-F0 "5V" 150 50 50 H I C CNN
-F1 "pcb-rescue_5V-generic" 0 150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 50 -50 50 0 100 50 50 0 50 N
-X GND ~ 0 0 100 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# pcb-rescue_ESP-12F-modules
-#
-DEF pcb-rescue_ESP-12F-modules IC 0 40 Y Y 1 F N
+DEF modules_ESP-12F IC 0 40 Y Y 1 F N
 F0 "IC" 0 400 50 H V C CNN
-F1 "pcb-rescue_ESP-12F-modules" 0 300 50 H V C CNN
+F1 "modules_ESP-12F" 0 300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -112,6 +97,21 @@ X IO12 6 500 -100 100 L 50 50 1 1 B
 X IO13 7 500 -200 100 L 50 50 1 1 B
 X VCC 8 0 800 100 D 50 50 1 1 W
 X GND 9 0 -700 100 U 50 50 1 1 w
+ENDDRAW
+ENDDEF
+#
+# pin_headers_1x3
+#
+DEF ~pin_headers_1x3 CN 0 40 Y Y 1 F N
+F0 "CN" 100 200 50 H V C CNN
+F1 "pin_headers_1x3" 0 200 50 H I C CNN
+F2 "" 0 100 50 H I C CNN
+F3 "" 0 -100 50 H I C CNN
+DRAW
+S 100 150 200 -150 0 1 0 F
+X ~ 1 0 100 100 R 50 50 1 1 B
+X ~ 2 0 0 100 R 50 50 1 1 B
+X ~ 3 0 -100 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
