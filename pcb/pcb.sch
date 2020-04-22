@@ -155,21 +155,37 @@ Text Label 5500 3900 0    50   ~ 0
 motor_drive+
 Text Label 5500 4000 0    50   ~ 0
 motor_drive-
-Wire Wire Line
-	5300 3200 6100 3200
-Wire Wire Line
-	6100 3200 6100 2700
 $Sheet
-S 6600 2300 1000 800 
+S 6600 4800 1000 800 
 U 5E98F463
 F0 "Hall-effect sensor" 79
 F1 "hall-effect.sch" 50
-F2 "hall_effect" O L 6600 2700 50 
+F2 "hall_effect" O L 6600 5200 50 
+F3 "hall_effect_low_trigger" I R 7600 5000 50 
+F4 "hall_effect_high_trigger" I R 7600 4900 50 
 $EndSheet
 Wire Wire Line
-	6600 2700 6100 2700
-Text Label 5500 3200 0    50   ~ 0
-hall_effect
-Wire Wire Line
 	5300 4000 6600 4000
+Text Label 5500 3700 0    50   ~ 0
+SDA
+Text Label 5500 3800 0    50   ~ 0
+SCL
+Wire Wire Line
+	5500 3800 5300 3800
+Wire Wire Line
+	5300 3700 5500 3700
+Text Label 5500 3500 0    50   ~ 0
+debug
+Wire Wire Line
+	5300 3500 5500 3500
+NoConn ~ 5300 3400
+NoConn ~ 5300 4200
+Wire Wire Line
+	6600 5200 6100 5200
+Wire Wire Line
+	6100 5200 6100 4100
+Wire Wire Line
+	6100 4100 5300 4100
+Text Label 5500 4100 0    50   ~ 0
+hall_effect
 $EndSCHEMATC

@@ -58,6 +58,40 @@ X GND ~ 0 0 100 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
+# generic_OR
+#
+DEF ~generic_OR IC 0 40 N Y 1 F N
+F0 "IC" 0 200 50 H V C CNN
+F1 "generic_OR" 0 300 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+T 0 0 0 50 0 0 0 ≥1 Normal 0 C C
+S -150 150 150 -150 0 1 0 f
+X ~ ~ -200 -100 50 R 50 50 1 1 I
+X ~ ~ -200 100 50 R 50 50 1 1 I
+X ~ ~ 200 0 50 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
+# generic_OpAmp
+#
+DEF ~generic_OpAmp IC 0 40 N Y 1 F N
+F0 "IC" 0 200 50 H V C CNN
+F1 "generic_OpAmp" 0 300 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -125 -75 -75 -75 N
+P 2 0 1 0 -100 100 -100 50 N
+P 3 0 1 0 -125 75 -100 75 -75 75 N
+P 4 0 1 0 150 0 -150 150 -150 -150 150 0 f
+X ~ ~ -200 -100 50 R 50 50 1 1 I
+X ~ ~ -200 100 50 R 50 50 1 1 I
+X ~ ~ 200 0 50 L 50 50 1 1 O
+ENDDRAW
+ENDDEF
+#
 # generic_R
 #
 DEF ~generic_R R 0 0 N N 1 F N
