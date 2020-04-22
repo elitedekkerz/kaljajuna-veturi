@@ -39,12 +39,17 @@ class train():
             "checkpoint":self.on_checkpoint,
             }))
 
+    def set_hops(self, message):
+        self.hops = int(message)
+
     def move(self, message):
         if message == "stop":
             self.set_status("stopped")
             self.m.move(0)
         else:
             self.set_status("moving")
+            if self.on_checkpoint:
+                self.hops += 1
             self.m.move(self.speed)
 
     def statemachine(self, level = None):
@@ -94,11 +99,13 @@ def run(mqtt_obj, parameters):
 
     mqtt.sub("move", t.move)
     mqtt.sub("calibrate", t.calibrate)
+    mqtt.sub("hops", t.set_hops)
 
     #Main loop
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
+        t.h.check_sensor()
         t.statemachine()
 
         utime.sleep(0.1)
