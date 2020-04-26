@@ -14,8 +14,266 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 4800 3700 0    50   Input ~ 0
+Text HLabel 6800 3900 0    50   Input ~ 0
 motor_drive+
-Text HLabel 4800 3800 0    50   Input ~ 0
+Text HLabel 6800 4100 0    50   Input ~ 0
 motor_drive-
+$Comp
+L motor_drivers:L9110 IC?
+U 1 1 5EA6259A
+P 7400 4000
+F 0 "IC?" H 7600 4400 50  0000 L CNN
+F 1 "L9110" H 7600 4300 50  0000 L CNN
+F 2 "" H 7500 4000 50  0001 C CNN
+F 3 "" H 7500 4000 50  0001 C CNN
+	1    7400 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 3900 6800 3900
+Wire Wire Line
+	6800 4100 7000 4100
+$Comp
+L generic:GND GND?
+U 1 1 5EA62658
+P 7300 4400
+F 0 "GND?" H 7450 4450 50  0001 C CNN
+F 1 "GND" H 7450 4400 50  0001 C CNN
+F 2 "" H 7300 4400 50  0001 C CNN
+F 3 "" H 7300 4400 50  0001 C CNN
+	1    7300 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA6266C
+P 7500 4400
+F 0 "GND?" H 7650 4450 50  0001 C CNN
+F 1 "GND" H 7650 4400 50  0001 C CNN
+F 2 "" H 7500 4400 50  0001 C CNN
+F 3 "" H 7500 4400 50  0001 C CNN
+	1    7500 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 4400 7500 4300
+Wire Wire Line
+	7300 4300 7300 4400
+$Comp
+L generic:C C?
+U 1 1 5EA6271E
+P 7000 3400
+F 0 "C?" H 7078 3446 50  0000 L CNN
+F 1 "1u" H 7078 3355 50  0000 L CNN
+F 2 "SMT:0603" H 7000 3300 50  0001 C CNN
+F 3 "" H 7000 3400 50  0001 C CNN
+	1    7000 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA6275E
+P 7000 3600
+F 0 "GND?" H 7150 3650 50  0001 C CNN
+F 1 "GND" H 7150 3600 50  0001 C CNN
+F 2 "" H 7000 3600 50  0001 C CNN
+F 3 "" H 7000 3600 50  0001 C CNN
+	1    7000 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 3600 7000 3500
+Wire Wire Line
+	7500 3700 7500 3200
+Wire Wire Line
+	7500 3200 7300 3200
+Wire Wire Line
+	7300 3700 7300 3200
+Connection ~ 7300 3200
+Wire Wire Line
+	7300 3200 7000 3200
+Wire Wire Line
+	7000 3300 7000 3200
+Text Label 6200 3200 0    50   ~ 0
+V_motor
+Connection ~ 7000 3200
+Text GLabel 4000 3200 0    50   Input ~ 0
+V_battery
+$Comp
+L Power:SX1308 IC?
+U 1 1 5EA633EB
+P 4800 3700
+F 0 "IC?" H 5000 4100 50  0000 C CNN
+F 1 "SX1308" H 5000 4000 50  0000 C CNN
+F 2 "" H 4800 3800 50  0001 C CNN
+F 3 "" H 4800 3800 50  0001 C CNN
+	1    4800 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:R R?
+U 1 1 5EA634C2
+P 5600 3500
+F 0 "R?" V 5554 3553 50  0000 L CNN
+F 1 "10k" V 5645 3553 50  0000 L CNN
+F 2 "SMT:0603" H 5500 3475 50  0001 C CNN
+F 3 "" H 5600 3500 50  0001 C CNN
+	1    5600 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L generic:R R?
+U 1 1 5EA63501
+P 5600 4100
+F 0 "R?" V 5554 4153 50  0000 L CNN
+F 1 "1k" V 5645 4153 50  0000 L CNN
+F 2 "SMT:0603" H 5500 4075 50  0001 C CNN
+F 3 "" H 5600 4100 50  0001 C CNN
+	1    5600 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA6367D
+P 5600 4400
+F 0 "GND?" H 5750 4450 50  0001 C CNN
+F 1 "GND" H 5750 4400 50  0001 C CNN
+F 2 "" H 5600 4400 50  0001 C CNN
+F 3 "" H 5600 4400 50  0001 C CNN
+	1    5600 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 4400 5600 4200
+$Comp
+L generic:GND GND?
+U 1 1 5EA637DC
+P 4800 4400
+F 0 "GND?" H 4950 4450 50  0001 C CNN
+F 1 "GND" H 4950 4400 50  0001 C CNN
+F 2 "" H 4800 4400 50  0001 C CNN
+F 3 "" H 4800 4400 50  0001 C CNN
+	1    4800 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 4400 4800 4000
+Wire Wire Line
+	5600 4000 5600 3800
+Wire Wire Line
+	5100 3800 5600 3800
+Connection ~ 5600 3800
+Wire Wire Line
+	5600 3800 5600 3600
+Wire Wire Line
+	4800 3400 4800 3200
+Wire Wire Line
+	4800 3200 4400 3200
+$Comp
+L generic:D D?
+U 1 1 5EA63D05
+P 5400 3200
+F 0 "D?" H 5400 3323 50  0000 C CNN
+F 1 "D" H 5400 3100 50  0001 C CNN
+F 2 "SMT:0603" H 5410 3200 50  0001 C CNN
+F 3 "" H 5410 3200 50  0001 C CNN
+	1    5400 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 3200 5600 3200
+Wire Wire Line
+	5600 3200 5600 3400
+$Comp
+L generic:C C?
+U 1 1 5EA6459C
+P 5900 3800
+F 0 "C?" H 5978 3846 50  0000 L CNN
+F 1 "10u" H 5978 3755 50  0000 L CNN
+F 2 "SMT:0603" H 5900 3700 50  0001 C CNN
+F 3 "" H 5900 3800 50  0001 C CNN
+	1    5900 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA64A6B
+P 5900 4400
+F 0 "GND?" H 6050 4450 50  0001 C CNN
+F 1 "GND" H 6050 4400 50  0001 C CNN
+F 2 "" H 5900 4400 50  0001 C CNN
+F 3 "" H 5900 4400 50  0001 C CNN
+	1    5900 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 3900 5900 4400
+Wire Wire Line
+	5900 3700 5900 3200
+Wire Wire Line
+	5900 3200 5600 3200
+Connection ~ 5600 3200
+Wire Wire Line
+	4500 3600 4400 3600
+Wire Wire Line
+	4400 3600 4400 3200
+Connection ~ 4400 3200
+Wire Wire Line
+	4400 3200 4100 3200
+$Comp
+L generic:C C?
+U 1 1 5EA660E1
+P 4100 3800
+F 0 "C?" H 4178 3846 50  0000 L CNN
+F 1 "1u" H 4178 3755 50  0000 L CNN
+F 2 "SMT:0603" H 4100 3700 50  0001 C CNN
+F 3 "" H 4100 3800 50  0001 C CNN
+	1    4100 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA66858
+P 4100 4400
+F 0 "GND?" H 4250 4450 50  0001 C CNN
+F 1 "GND" H 4250 4400 50  0001 C CNN
+F 2 "" H 4100 4400 50  0001 C CNN
+F 3 "" H 4100 4400 50  0001 C CNN
+	1    4100 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 4400 4100 3900
+Wire Wire Line
+	4100 3700 4100 3200
+Connection ~ 4100 3200
+Wire Wire Line
+	4100 3200 4000 3200
+$Comp
+L generic:L L?
+U 1 1 5EA681EF
+P 5000 3200
+F 0 "L?" H 5000 3390 50  0000 C CNN
+F 1 "L" H 5000 3299 50  0000 C CNN
+F 2 "" H 5000 3200 50  0001 C CNN
+F 3 "" H 5000 3200 50  0001 C CNN
+	1    5000 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 3200 5300 3200
+Wire Wire Line
+	4900 3200 4800 3200
+Connection ~ 4800 3200
+Wire Wire Line
+	5900 3200 7000 3200
+Wire Wire Line
+	7800 3900 8200 3900
+Wire Wire Line
+	7800 4100 8200 4100
+Text Label 8200 3900 2    50   ~ 0
+motor_+
+Text Label 8200 4100 2    50   ~ 0
+motor_-
+Connection ~ 5900 3200
 $EndSCHEMATC
