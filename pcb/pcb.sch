@@ -108,7 +108,7 @@ Wire Wire Line
 	3800 2900 3800 3100
 Connection ~ 4100 2900
 $Sheet
-S 6600 3600 1000 800 
+S 6600 3600 1200 800 
 U 5E8E1E56
 F0 "Motor driver" 79
 F1 "motor-driver.sch" 50
@@ -156,13 +156,13 @@ motor_drive+
 Text Label 5500 4000 0    50   ~ 0
 motor_drive-
 $Sheet
-S 6600 4800 1000 800 
+S 6600 4800 1200 800 
 U 5E98F463
 F0 "Hall-effect sensor" 79
 F1 "hall-effect.sch" 50
 F2 "hall_effect" O L 6600 5200 50 
-F3 "hall_effect_low_trigger" I R 7600 5000 50 
-F4 "hall_effect_high_trigger" I R 7600 4900 50 
+F3 "hall_effect_low_threshold" I R 7800 5000 50 
+F4 "hall_effect_high_threshold" I R 7800 4900 50 
 $EndSheet
 Wire Wire Line
 	5300 4000 6600 4000
@@ -170,10 +170,6 @@ Text Label 5500 3700 0    50   ~ 0
 SDA
 Text Label 5500 3800 0    50   ~ 0
 SCL
-Wire Wire Line
-	5500 3800 5300 3800
-Wire Wire Line
-	5300 3700 5500 3700
 Text Label 5500 3500 0    50   ~ 0
 debug
 Wire Wire Line
@@ -188,4 +184,115 @@ Wire Wire Line
 	6100 4100 5300 4100
 Text Label 5500 4100 0    50   ~ 0
 hall_effect
+$Comp
+L DAC:MCP4728 IC?
+U 1 1 5EA593A1
+P 7100 2600
+F 0 "IC?" H 7400 3000 50  0000 C CNN
+F 1 "MCP4728" H 7400 2900 50  0000 C CNN
+F 2 "" H 7100 2600 50  0001 C CNN
+F 3 "" H 7100 2600 50  0001 C CNN
+	1    7100 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND GND?
+U 1 1 5EA5975A
+P 7100 3100
+F 0 "GND?" H 7250 3150 50  0001 C CNN
+F 1 "GND" H 7250 3100 50  0001 C CNN
+F 2 "" H 7100 3100 50  0001 C CNN
+F 3 "" H 7100 3100 50  0001 C CNN
+	1    7100 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 3100 7100 3000
+$Comp
+L generic:C C?
+U 1 1 5EA59DC2
+P 6800 2000
+F 0 "C?" H 6878 2000 50  0000 L CNN
+F 1 "C" H 6900 1900 50  0001 C CNN
+F 2 "SMT:0603" H 6800 1900 50  0001 C CNN
+F 3 "" H 6800 2000 50  0001 C CNN
+	1    6800 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 2300 7100 1800
+Wire Wire Line
+	7100 1800 6800 1800
+Wire Wire Line
+	6800 1800 6800 1900
+$Comp
+L generic:GND GND?
+U 1 1 5EA5A166
+P 6800 2200
+F 0 "GND?" H 6950 2250 50  0001 C CNN
+F 1 "GND" H 6950 2200 50  0001 C CNN
+F 2 "" H 6800 2200 50  0001 C CNN
+F 3 "" H 6800 2200 50  0001 C CNN
+	1    6800 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 2200 6800 2100
+$Comp
+L generic:3V3 3V?
+U 1 1 5EA5AF28
+P 6800 1700
+F 0 "3V?" H 6950 1750 50  0001 C CNN
+F 1 "3V3" H 6800 1900 50  0000 C TNN
+F 2 "" H 6800 1700 50  0001 C CNN
+F 3 "" H 6800 1700 50  0001 C CNN
+	1    6800 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 1700 6800 1800
+Connection ~ 6800 1800
+Wire Wire Line
+	6700 2700 6600 2700
+Wire Wire Line
+	6600 2700 6600 3100
+$Comp
+L generic:GND GND?
+U 1 1 5EA5B765
+P 6600 3100
+F 0 "GND?" H 6750 3150 50  0001 C CNN
+F 1 "GND" H 6750 3100 50  0001 C CNN
+F 2 "" H 6600 3100 50  0001 C CNN
+F 3 "" H 6600 3100 50  0001 C CNN
+	1    6600 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 3800 6400 2600
+Wire Wire Line
+	6400 2600 6700 2600
+Wire Wire Line
+	5300 3800 6400 3800
+Wire Wire Line
+	6300 3700 6300 2500
+Wire Wire Line
+	6300 2500 6700 2500
+Wire Wire Line
+	5300 3700 6300 3700
+Wire Wire Line
+	7500 2500 8500 2500
+Wire Wire Line
+	8500 2500 8500 5000
+Wire Wire Line
+	8500 5000 7800 5000
+Wire Wire Line
+	7500 2600 8300 2600
+Wire Wire Line
+	8300 2600 8300 4900
+Wire Wire Line
+	8300 4900 7800 4900
+Text Label 8300 4000 1    50   ~ 0
+hall_effect_high_threshold
+Text Label 8500 4000 1    50   ~ 0
+hall_effect_low_threshold
 $EndSCHEMATC

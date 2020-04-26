@@ -189,12 +189,12 @@ Wire Wire Line
 Wire Wire Line
 	5700 3100 5700 3200
 Text HLabel 5500 3100 0    50   Input ~ 0
-hall_effect_low_trigger
+hall_effect_low_threshold
 Wire Wire Line
 	5500 3100 5700 3100
 Connection ~ 5700 3100
 Text HLabel 5500 4500 0    50   Input ~ 0
-hall_effect_high_trigger
+hall_effect_high_threshold
 Wire Wire Line
 	5500 4500 5700 4500
 Connection ~ 5700 4500
