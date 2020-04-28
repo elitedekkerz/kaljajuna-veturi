@@ -17,9 +17,7 @@ class train():
         self.m = motor()
         self.h = halleffect()
         self.t = machine.Timer(-1)
-        self.hall_timer = machine.Timer(-1)
         self.t.init(period=5000, callback=self.update)
-        self.hall_timer.init(period=30, callback=self.h.check_sensor)
 
     def calibrate(self, message = "all"):
         if message in ["all", "hall-effect"]:
@@ -33,10 +31,9 @@ class train():
 
     def update(self,callback_arg):
         self.mqtt.pub("JSON", json.dumps({
-            "hall-effect":self.h.read(),
             "status":self.status,
             "hops":self.hops,
-            "checkpoint":self.on_checkpoint,
+            "checkpoint":[False,True][self.h.trigger.value()],
             }))
 
     def set_hops(self, message):
@@ -58,10 +55,7 @@ class train():
             #clear flag
             self.h.sensor_triggered = False
 
-            #change status only once per checkpoint
-            if self.on_checkpoint:
-                return
-            self.on_checkpoint = True
+            self.mqtt.pub("info", "checkpoint")
 
             #states
             if self.status == "moving":
@@ -78,9 +72,6 @@ class train():
                 self.m.move(0)
                 self.hops = 1
                 self.set_status("stopped")
-        else:
-            #clear on_checkpoint flag when not on checkpoint
-            self.on_checkpoint = False
 
 mqtt = None
 
@@ -105,7 +96,6 @@ def run(mqtt_obj, parameters):
     while True:
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
-        t.h.check_sensor()
         t.statemachine()
 
         utime.sleep(0.1)
