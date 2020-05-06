@@ -10,14 +10,18 @@ class train():
         self.status = None
         self.hops = 1
         self.speed = -0.3
-        self.direction = 0
-        self.on_checkpoint = False
+        #self.direction = 0
+        #self.on_checkpoint = False
 
         self.mqtt = mqtt
         self.m = motor()
         self.h = halleffect()
-        self.t = machine.Timer(-1)
-        self.t.init(period=5000, callback=self.update)
+        self.battery = machine.ADC(0)
+        self.battery_scalar = 4.3 #set by voltage divider at ADC input (Rb+Rt)/Rb
+
+    def read_battery(self):
+        #TODO enable some battery measurement circuit?
+        return self.battery_scalar * self.battery.read() / 1024 * 3.3 #wemos1D has internal divider......
 
     def calibrate(self, message = "all"):
         if message in ["all", "hall-effect"]:
@@ -29,11 +33,12 @@ class train():
         self.mqtt.pub("status", status)
         self.status = status
 
-    def update(self,callback_arg):
+    def update(self):
         self.mqtt.pub("JSON", json.dumps({
             "status":self.status,
             "hops":self.hops,
             "checkpoint":[False,True][self.h.trigger.value()],
+            "battery":self.read_battery(),
             }))
 
     def set_hops(self, message):
@@ -97,5 +102,6 @@ def run(mqtt_obj, parameters):
         #Call periodicaly to check if we have recived new messages. 
         mqtt.check_msg()
         t.statemachine()
+        t.update()
 
         utime.sleep(0.1)

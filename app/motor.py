@@ -6,6 +6,7 @@ class motor():
         self.m = [Pin(12, Pin.OUT), Pin(13, Pin.OUT)]
         self.pwm = [PWM(self.m[0]),PWM(self.m[1])]
         for p in self.pwm:
+            p.freq(1000)
             p.duty(0)
 
     def move(self, direction = 0):
