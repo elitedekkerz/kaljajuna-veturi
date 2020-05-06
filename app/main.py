@@ -39,6 +39,18 @@ class train():
         self.mqtt.pub("status", status)
         self.status = status
 
+    def read_mpu(self):
+        data = self.i2c.readfrom_mem(104,0x3b,14)
+        return {
+        "x" : data[0]<<8|data[1],
+        "y" : data[2]<<8|data[3],
+        "z" : data[4]<<8|data[5],
+        "temperature" : data[6]<<8|data[7],
+        "roll"  : data[8]<<8|data[9],
+        "pitch" : data[10]<<8|data[11],
+        "yaw"   : data[12]<<8|data[13]
+        }
+
     def update(self):
         self.mqtt.pub("JSON", json.dumps({
             "status":self.status,
@@ -46,7 +58,7 @@ class train():
             "checkpoint":[False,True][self.h.trigger.value()],
             "battery":self.read_battery(),
             "timestamp":utime.ticks_ms(),
-            "mpu6050":ubinascii.hexlify(self.i2c.readfrom_mem(104,59,14), ','),
+            "mpu6050":self.read_mpu(),
             }))
 
     def set_hops(self, message):
