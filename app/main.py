@@ -39,6 +39,7 @@ class train():
             "hops":self.hops,
             "checkpoint":[False,True][self.h.trigger.value()],
             "battery":self.read_battery(),
+            "timestamp":utime.ticks_ms()
             }))
 
     def set_hops(self, message):
