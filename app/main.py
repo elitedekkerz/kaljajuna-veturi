@@ -1,6 +1,7 @@
 import utime
 import machine
 import json
+import ubinascii
 from app.motor import motor
 from app.halleffect import halleffect
 
@@ -12,6 +13,11 @@ class train():
         self.speed = -0.3
         #self.direction = 0
         #self.on_checkpoint = False
+
+        self.i2c = machine.I2C(scl = machine.Pin(5) ,sda = machine.Pin(4))
+
+        #setup mpu6050
+        self.i2c.writeto_mem(104,107,b'\x00')
 
         self.mqtt = mqtt
         self.m = motor()
@@ -39,7 +45,8 @@ class train():
             "hops":self.hops,
             "checkpoint":[False,True][self.h.trigger.value()],
             "battery":self.read_battery(),
-            "timestamp":utime.ticks_ms()
+            "timestamp":utime.ticks_ms(),
+            "mpu6050":ubinascii.hexlify(self.i2c.readfrom_mem(104,59,14), ','),
             }))
 
     def set_hops(self, message):
