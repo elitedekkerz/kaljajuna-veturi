@@ -4,7 +4,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 4
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -529,7 +529,7 @@ F 3 "" H 8800 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8900 3400 9100 3400
+	8900 3400 9000 3400
 Wire Wire Line
 	8700 3400 8600 3400
 Connection ~ 8600 3400
@@ -637,4 +637,11 @@ Wire Wire Line
 	9600 5300 9800 5300
 Wire Wire Line
 	9800 5300 9800 5200
+Wire Wire Line
+	8900 3800 9000 3800
+Wire Wire Line
+	9000 3800 9000 3400
+Connection ~ 9000 3400
+Wire Wire Line
+	9000 3400 9100 3400
 $EndSCHEMATC

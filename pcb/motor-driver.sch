@@ -4,7 +4,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 4
+Sheet 2 5
 Title ""
 Date ""
 Rev ""
@@ -261,7 +261,7 @@ F 3 "" H 5000 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5100 3200 5300 3200
+	5100 3200 5200 3200
 Wire Wire Line
 	4900 3200 4800 3200
 Connection ~ 4800 3200
@@ -276,4 +276,11 @@ motor_+
 Text Label 8200 4100 2    50   ~ 0
 motor_-
 Connection ~ 5900 3200
+Wire Wire Line
+	5100 3600 5200 3600
+Wire Wire Line
+	5200 3600 5200 3200
+Connection ~ 5200 3200
+Wire Wire Line
+	5200 3200 5300 3200
 $EndSCHEMATC
