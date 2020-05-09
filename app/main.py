@@ -12,7 +12,7 @@ class train():
         self.hops = 1
         self.speed = -0.3
         #self.direction = 0
-        #self.on_checkpoint = False
+        self.on_checkpoint = False
 
         self.i2c = machine.I2C(scl = machine.Pin(5) ,sda = machine.Pin(4))
 
