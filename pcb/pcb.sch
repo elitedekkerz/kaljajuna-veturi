@@ -369,11 +369,11 @@ Wire Wire Line
 	4100 4900 4800 4900
 Connection ~ 4600 3500
 Wire Wire Line
-	3400 3600 3800 3600
+	3400 3600 3600 3600
 Wire Wire Line
-	3800 3600 3800 2400
+	3600 3600 3600 2400
 Wire Wire Line
-	3800 2400 6000 2400
+	3600 2400 6000 2400
 Wire Wire Line
 	6000 2400 6000 3300
 Wire Wire Line
@@ -401,8 +401,6 @@ F 3 "" H 4500 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3400 3500 4100 3500
-Wire Wire Line
 	4500 3700 4500 3600
 Wire Wire Line
 	4500 3600 4400 3600
@@ -410,7 +408,22 @@ Wire Wire Line
 	4200 3600 4100 3600
 Wire Wire Line
 	4100 3600 4100 3500
-Connection ~ 4100 3500
 Wire Wire Line
 	4100 3500 4600 3500
+$Comp
+L generic:R R?
+U 1 1 5EBA3466
+P 3900 3500
+F 0 "R?" H 3900 3598 50  0000 C CNN
+F 1 "R" H 3900 3400 50  0001 C CNN
+F 2 "SMT:0603" H 3800 3475 50  0001 C CNN
+F 3 "" H 3900 3500 50  0001 C CNN
+	1    3900 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 3500 3800 3500
+Wire Wire Line
+	4000 3500 4100 3500
+Connection ~ 4100 3500
 $EndSCHEMATC
