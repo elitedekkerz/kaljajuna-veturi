@@ -431,4 +431,20 @@ X USBDM 9 -600 0 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
+# switches_switch_3x4
+#
+DEF ~switches_switch_3x4 SW 0 40 N N 1 F N
+F0 "SW" 0 100 50 H V C CNN
+F1 "switches_switch_3x4" 0 100 50 H I C CNN
+F2 "buttons:sw_3x4" 0 -50 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 2 0 1 0 -50 0 50 50 N
+X ~ 1 -100 0 50 R 50 50 1 1 B
+X ~ 2 -100 0 50 R 50 50 1 1 B
+X ~ 3 100 0 50 L 50 50 1 1 B
+X ~ 4 100 0 50 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
 #End Library
