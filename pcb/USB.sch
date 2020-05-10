@@ -1,0 +1,258 @@
+EESchema Schematic File Version 4
+LIBS:pcb-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L generic:USB-Micro CN?
+U 1 1 5D45B29E
+P 4000 3500
+F 0 "CN?" H 4069 3825 50  0000 C CNN
+F 1 "USB-Micro" H 4069 3734 50  0000 C CNN
+F 2 "USB:micro_usb" H 4000 3500 50  0001 C CNN
+F 3 "" H 4000 3500 50  0001 C CNN
+	1    4000 3500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L generic:GND #GND?
+U 1 1 5D45B32E
+P 4200 4900
+F 0 "#GND?" H 4350 4950 50  0001 C CNN
+F 1 "GND" H 4350 4900 50  0001 C CNN
+F 2 "" H 4200 4900 50  0001 C CNN
+F 3 "" H 4200 4900 50  0001 C CNN
+	1    4200 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3800 4200 3800
+Wire Wire Line
+	4200 3800 4200 4900
+Text HLabel 7200 3900 2    50   Output ~ 0
+TX
+Text HLabel 7200 4000 2    50   Input ~ 0
+RX
+Wire Wire Line
+	4100 3700 4200 3700
+Wire Wire Line
+	4200 3700 4200 3800
+Connection ~ 4200 3800
+$Comp
+L serial:FT230XS IC?
+U 1 1 5D83DBBB
+P 6300 4200
+F 0 "IC?" H 6600 4800 50  0000 C CNN
+F 1 "FT230XS" H 6600 4700 50  0000 C CNN
+F 2 "SSOP:SSOP-16" H 6300 4200 50  0001 C CNN
+F 3 "" H 6300 4200 50  0001 C CNN
+	1    6300 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND #GND?
+U 1 1 5D83DE64
+P 6200 4900
+F 0 "#GND?" H 6350 4950 50  0001 C CNN
+F 1 "GND" H 6350 4900 50  0001 C CNN
+F 2 "" H 6200 4900 50  0001 C CNN
+F 3 "" H 6200 4900 50  0001 C CNN
+	1    6200 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND #GND?
+U 1 1 5D83DE77
+P 6400 4900
+F 0 "#GND?" H 6550 4950 50  0001 C CNN
+F 1 "GND" H 6550 4900 50  0001 C CNN
+F 2 "" H 6400 4900 50  0001 C CNN
+F 3 "" H 6400 4900 50  0001 C CNN
+	1    6400 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 4800 6400 4900
+Wire Wire Line
+	6200 4900 6200 4800
+Wire Wire Line
+	5700 4000 5600 4000
+Wire Wire Line
+	5600 4000 5600 3600
+Wire Wire Line
+	5600 3600 6400 3600
+Wire Wire Line
+	6400 3600 6400 3700
+Wire Wire Line
+	6200 3700 6200 3400
+$Comp
+L generic:C C?
+U 1 1 5D83E469
+P 5600 4700
+F 0 "C?" H 5678 4700 50  0000 L CNN
+F 1 "C" H 5700 4600 50  0001 C CNN
+F 2 "SMT:0603" H 5600 4600 50  0001 C CNN
+F 3 "" H 5600 4700 50  0001 C CNN
+	1    5600 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 3500 5200 4200
+$Comp
+L generic:GND #GND?
+U 1 1 5D83EA0A
+P 5600 4900
+F 0 "#GND?" H 5750 4950 50  0001 C CNN
+F 1 "GND" H 5750 4900 50  0001 C CNN
+F 2 "" H 5600 4900 50  0001 C CNN
+F 3 "" H 5600 4900 50  0001 C CNN
+	1    5600 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 4800 5600 4900
+Wire Wire Line
+	5600 4600 5600 4500
+Connection ~ 5600 4000
+Wire Wire Line
+	5100 4300 5100 3600
+Wire Wire Line
+	6900 3900 7200 3900
+Wire Wire Line
+	7200 4000 6900 4000
+Wire Wire Line
+	5700 4500 5600 4500
+Connection ~ 5600 4500
+Wire Wire Line
+	5600 4500 5600 4000
+$Comp
+L generic:C C?
+U 1 1 5D840187
+P 5400 3700
+F 0 "C?" H 5478 3700 50  0000 L CNN
+F 1 "C" H 5500 3600 50  0001 C CNN
+F 2 "SMT:0603" H 5400 3600 50  0001 C CNN
+F 3 "" H 5400 3700 50  0001 C CNN
+	1    5400 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L generic:GND #GND?
+U 1 1 5D840DB8
+P 5400 3900
+F 0 "#GND?" H 5550 3950 50  0001 C CNN
+F 1 "GND" H 5550 3900 50  0001 C CNN
+F 2 "" H 5400 3900 50  0001 C CNN
+F 3 "" H 5400 3900 50  0001 C CNN
+	1    5400 3900
+	1    0    0    -1  
+$EndComp
+Connection ~ 6200 3400
+Wire Wire Line
+	6200 3400 7200 3400
+Wire Wire Line
+	5100 4300 5700 4300
+Wire Wire Line
+	5200 4200 5700 4200
+Wire Wire Line
+	5400 3900 5400 3800
+Wire Wire Line
+	5400 3600 5400 3400
+Wire Wire Line
+	5400 3400 6200 3400
+Wire Wire Line
+	4100 3600 5100 3600
+Wire Wire Line
+	4100 3500 5200 3500
+Connection ~ 5400 3400
+$Comp
+L PCB:test_point TP?
+U 1 1 5D846BB7
+P 7000 4300
+F 0 "TP?" H 7129 4331 50  0000 L CNN
+F 1 "test_point" H 7000 4400 50  0001 C CNN
+F 2 "PCB:test_point" H 7100 4250 50  0001 C CNN
+F 3 "" H 7000 4300 50  0001 C CNN
+	1    7000 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB:test_point TP?
+U 1 1 5D846BF3
+P 7000 4400
+F 0 "TP?" H 7129 4431 50  0000 L CNN
+F 1 "test_point" H 7000 4500 50  0001 C CNN
+F 2 "PCB:test_point" H 7100 4350 50  0001 C CNN
+F 3 "" H 7000 4400 50  0001 C CNN
+	1    7000 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB:test_point TP?
+U 1 1 5D846C11
+P 7000 4500
+F 0 "TP?" H 7129 4531 50  0000 L CNN
+F 1 "test_point" H 7000 4600 50  0001 C CNN
+F 2 "PCB:test_point" H 7100 4450 50  0001 C CNN
+F 3 "" H 7000 4500 50  0001 C CNN
+	1    7000 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB:test_point TP?
+U 1 1 5D846C31
+P 7000 4600
+F 0 "TP?" H 7129 4631 50  0000 L CNN
+F 1 "test_point" H 7000 4700 50  0001 C CNN
+F 2 "PCB:test_point" H 7100 4550 50  0001 C CNN
+F 3 "" H 7000 4600 50  0001 C CNN
+	1    7000 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 4600 6900 4600
+Wire Wire Line
+	6900 4500 7000 4500
+Wire Wire Line
+	7000 4400 6900 4400
+Wire Wire Line
+	6900 4300 7000 4300
+$Comp
+L PCB:test_point TP?
+U 1 1 5D848267
+P 7000 4200
+F 0 "TP?" H 7129 4231 50  0000 L CNN
+F 1 "test_point" H 7000 4300 50  0001 C CNN
+F 2 "PCB:test_point" H 7100 4150 50  0001 C CNN
+F 3 "" H 7000 4200 50  0001 C CNN
+	1    7000 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 4200 6900 4200
+Text Label 4700 3500 0    50   ~ 0
+USBN
+Text Label 4700 3600 0    50   ~ 0
+USBP
+Text HLabel 7200 3400 2    50   Output ~ 0
+5V_USB
+Wire Wire Line
+	4100 3400 5400 3400
+Text HLabel 7400 4300 2    50   Output ~ 0
+~DTR
+Text HLabel 7200 4100 2    50   Output ~ 0
+~RTS
+Wire Wire Line
+	6900 4100 7200 4100
+$EndSCHEMATC
