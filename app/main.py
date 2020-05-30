@@ -55,6 +55,7 @@ class train():
         self.mqtt.pub("JSON", json.dumps({
             "status":self.status,
             "hops":self.hops,
+            "speed":self.speed,
             "checkpoint":[False,True][self.h.trigger.value()],
             "battery":self.read_battery(),
             "timestamp":utime.ticks_ms(),
@@ -63,6 +64,9 @@ class train():
 
     def set_hops(self, message):
         self.hops = int(message)
+
+    def set_speed(self, message):
+        self.speed = float(message)
 
     def move(self, message):
         if message == "stop":
@@ -116,6 +120,7 @@ def run(mqtt_obj, parameters):
     mqtt.sub("move", t.move)
     mqtt.sub("calibrate", t.calibrate)
     mqtt.sub("hops", t.set_hops)
+    mqtt.sub("speed", t.set_speed)
 
     #Main loop
     while True:
