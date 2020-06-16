@@ -68,6 +68,10 @@ class train():
     def set_speed(self, message):
         self.speed = float(message)
 
+        #update movement speed if moving
+        if self.status == "moving":
+            self.move("")
+
     def move(self, message):
         if message == "stop":
             self.set_status("stopped")
