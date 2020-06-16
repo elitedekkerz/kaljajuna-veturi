@@ -128,11 +128,14 @@ def run(mqtt_obj, parameters):
     mqtt.sub("hops", t.set_hops)
     mqtt.sub("speed", t.set_speed)
 
+    next_message = utime.ticks_ms()
     #Main loop
     while True:
         #Call periodicaly to check if we have recived new messages. 
-        mqtt.check_msg()
-        t.statemachine()
-        t.update()
+        loop_time = utime.ticks_ms()
+        if next_message < loop_time:
+            mqtt.check_msg()
+            t.update()
+            next_message = loop_time + 1000
 
-        utime.sleep(0.1)
+        t.statemachine()
