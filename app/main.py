@@ -85,8 +85,6 @@ class train():
     def statemachine(self, level = None):
         #check for stop
         if self.h.sensor_triggered:
-            #clear flag
-            self.h.sensor_triggered = False
 
             self.mqtt.pub("info", "checkpoint")
 
@@ -105,6 +103,10 @@ class train():
                 self.m.move(0)
                 self.hops = 1
                 self.set_status("stopped")
+
+            #clear flag
+            utime.sleep_ms(100)
+            self.h.sensor_triggered = False
 
 mqtt = None
 
