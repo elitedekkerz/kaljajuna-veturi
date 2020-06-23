@@ -52,15 +52,12 @@ class train():
         }
 
     def update(self):
-        self.mqtt.pub("JSON", json.dumps({
-            "status":self.status,
-            "hops":self.hops,
-            "speed":self.speed,
-            "checkpoint":[False,True][self.h.trigger.value()],
-            "battery":self.read_battery(),
-            "timestamp":utime.ticks_ms(),
-            "mpu6050":self.read_mpu(),
-            }))
+        self.mqtt.pub("status",self.status)
+        self.mqtt.pub("hops",self.hops)
+        self.mqtt.pub("speed",self.speed)
+        self.mqtt.pub("checkpoint",[False,True][self.h.trigger.value()])
+        self.mqtt.pub("battery",self.read_battery())
+        self.mqtt.pub("timestamp",utime.ticks_ms())
 
     def set_hops(self, message):
         self.hops = int(message)
