@@ -77,6 +77,12 @@ class train():
             self.set_status("stopped")
             self.m.move(0)
         else:
+            #try to set hops in case a value was given in the message
+            try:
+                self.hops = int(message)
+            except:
+                pass
+
             self.set_status("moving")
             if self.on_checkpoint:
                 self.hops += 1
