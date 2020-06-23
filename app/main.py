@@ -59,9 +59,6 @@ class train():
         self.mqtt.pub("battery",self.read_battery())
         self.mqtt.pub("timestamp",utime.ticks_ms())
 
-    def set_hops(self, message):
-        self.hops = int(message)
-
     def set_speed(self, message):
         self.speed = float(message)
 
@@ -128,7 +125,6 @@ def run(mqtt_obj, parameters):
 
     mqtt.sub("move", t.move)
     mqtt.sub("calibrate", t.calibrate)
-    mqtt.sub("hops", t.set_hops)
     mqtt.sub("speed", t.set_speed)
 
     next_message = utime.ticks_ms()
